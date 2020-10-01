@@ -1,5 +1,4 @@
 language: java
 script:
-- cd GestionTareas
 - mvn clean install
 - mvn test
