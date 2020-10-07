@@ -1,8 +1,8 @@
 language: java
 before_script:
-- apt-get update -y
-- apt-get install rubygems -y
-- gem install dpl
+- sudo apt-get update -y
+- sudo apt-get install rubygems -y
+- sudo gem install dpl
 
 script:
 - mvn clean install
