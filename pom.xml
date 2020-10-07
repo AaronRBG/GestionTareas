@@ -22,4 +22,11 @@
   		<url>file:C:\deploy</url>
   	</repository>
   </distributionManagement>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.mongodb</groupId>
+  		<artifactId>mongodb-driver</artifactId>
+  		<version>3.12.1</version>
+  	</dependency>
+  </dependencies>
 </project>
