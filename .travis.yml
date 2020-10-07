@@ -1,4 +1,11 @@
 language: java
+before_script:
+- npm install
+- npm run build
+- apt-get update -y
+- apt-get install rubygems -y
+- gem install dpl
+
 script:
 - mvn clean install
 - mvn test
