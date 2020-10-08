@@ -1,4 +1,4 @@
-
+package persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,14 +6,10 @@ import java.sql.PreparedStatement;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.persistencia.agenteDB;
+import dominio.Tarea;
 
 @Repository
-public interface TareaDAO extends CrudRepository<User, String> {
-
-	private TareaDAO() {
-
-	}
+public interface TareaDAO extends CrudRepository<Tarea, String> {
 	
 	public static void insert(String nombre, Boolean done) {
 		
@@ -25,7 +21,7 @@ public interface TareaDAO extends CrudRepository<User, String> {
 			String sql = "insert into Tareas (nombre, done) values (?, ?)";
 			try (PreparedStatement ps = bd.prepareStatement(sql)) {
 				ps.setString(1, nombre);
-				ps.setString(2, donette);
+				ps.setString(2, Integer.toString(donette));
 				ps.executeUpdate();
 			}
 		} catch (Exception e) {
@@ -43,7 +39,7 @@ public interface TareaDAO extends CrudRepository<User, String> {
 			String sql = "update Tareas set done = ? where nombre = ?";
 			try (PreparedStatement ps = bd.prepareStatement(sql)) {
 				ps.setString(2, nombre);
-				ps.setString(1, donette);
+				ps.setString(1, Integer.toString(donette));
 				ps.executeUpdate();
 			}
 		} catch (Exception e) {
