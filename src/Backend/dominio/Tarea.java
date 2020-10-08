@@ -1,4 +1,7 @@
 package dominio;
+
+import org.json.JSONObject;
+
 public class Tarea {
 
 	private String nombre;

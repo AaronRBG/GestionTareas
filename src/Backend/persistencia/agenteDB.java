@@ -16,7 +16,7 @@ public class agenteDB {
 	
     private agenteDB() {
     	try {
-			this.connection = DriverManager.getConnection("mongodb+srv://david:david123@clusterequipo1.idibk.mongodb.net/<dbname>?retryWrites=true&w=majority");
+			this.connection = DriverManager.getConnection("mongodb+srv://david:david123@clusterequipo1.idibk.mongodb.net/User?retryWrites=true&w=majority");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
