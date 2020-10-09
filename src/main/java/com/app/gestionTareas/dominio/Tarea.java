@@ -1,4 +1,4 @@
-package dominio;
+package com.app.gestionTareas.dominio;
 
 import org.json.JSONObject;
 

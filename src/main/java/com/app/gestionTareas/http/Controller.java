@@ -1,4 +1,4 @@
-package http;
+package com.app.gestionTareas.http;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dominio.Manager;
+import com.app.gestionTareas.dominio.Manager;
 
 @RestController
 public class Controller {

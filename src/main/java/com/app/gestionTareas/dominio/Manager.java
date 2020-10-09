@@ -1,7 +1,10 @@
-package dominio;
+package com.app.gestionTareas.dominio;
 
 import javax.servlet.http.HttpSession;
-import persistencia.*;
+
+import com.app.gestionTareas.persistencia.TareaDAO;
+
+import com.app.gestionTareas.persistencia.*;
 
 public class Manager {
 	

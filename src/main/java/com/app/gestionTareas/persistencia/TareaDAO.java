@@ -1,4 +1,4 @@
-package persistencia;
+package com.app.gestionTareas.persistencia;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import dominio.Tarea;
+import com.app.gestionTareas.dominio.Tarea;
 
 @Repository
 public interface TareaDAO extends CrudRepository<Tarea, String> {

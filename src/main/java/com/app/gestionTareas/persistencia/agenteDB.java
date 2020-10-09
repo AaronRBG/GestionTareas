@@ -1,4 +1,4 @@
-package persistencia;
+package com.app.gestionTareas.persistencia;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ public class agenteDB {
 	
     private agenteDB() {
     	try {
-			this.connection = DriverManager.getConnection("mongodb+srv://david:david123@clusterequipo1.idibk.mongodb.net/User?retryWrites=true&w=majority");
+			this.connection = DriverManager.getConnection("mongodb+srv://aaron:aaron123@clusterequipo1.idibk.mongodb.net/BD_Equipo1?retryWrites=true&w=majority");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -48,7 +48,7 @@ public class agenteDB {
 
     public Connection getBd() throws SQLException{
     	if(this.connection.isClosed()) {
-    		this.connection = DriverManager.getConnection("jdbc:h2:~/test");
+    		this.connection = DriverManager.getConnection("mongodb+srv://aaron:aaron123@clusterequipo1.idibk.mongodb.net/BD_Equipo1?retryWrites=true&w=majority");
     	}
         return this.connection;
     }
