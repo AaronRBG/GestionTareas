@@ -19,7 +19,7 @@ public class Manager {
 		return ManagerHolder.singleton;
 	}
 	
-	public void enviar(HttpSession session, String nombre, Boolean done) {
+	public void insert(HttpSession session, String nombre, Boolean done) {
 		try {
 						
 			TareaDAO.insert(nombre, done);

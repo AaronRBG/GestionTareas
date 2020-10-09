@@ -3,10 +3,12 @@ package com.app.gestionTareas.persistencia;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+import org.bson.Document;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.app.gestionTareas.dominio.Tarea;
+import com.mongodb.client.MongoCollection;
 
 @Repository
 public interface TareaDAO extends CrudRepository<Tarea, String> {
@@ -17,13 +19,14 @@ public interface TareaDAO extends CrudRepository<Tarea, String> {
 		if(done)
 			donette=1;
 		
-		try (Connection bd = agenteDB.get().getBd()) {
+		try (MongoCollection<Document> bd = agenteDB.get().getBd()) {
 			String sql = "insert into Tareas (nombre, done) values (?, ?)";
 			try (PreparedStatement ps = bd.prepareStatement(sql)) {
 				ps.setString(1, nombre);
 				ps.setString(2, Integer.toString(donette));
 				ps.executeUpdate();
 			}
+			bd.close();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

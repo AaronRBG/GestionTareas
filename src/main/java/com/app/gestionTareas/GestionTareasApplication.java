@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+@EnableAutoConfiguration
 public class GestionTareasApplication {
 
 	public static void main(String[] args) {

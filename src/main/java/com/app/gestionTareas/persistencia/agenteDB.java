@@ -1,41 +1,34 @@
 package com.app.gestionTareas.persistencia;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
-import org.bson.types.ObjectId;
 
 public class agenteDB {
 	
-	private Connection connection;
+	private MongoClientURI uri;
+	private MongoClient mongoClient;
+	private MongoDatabase database;
+	private MongoCollection<Document> collection;
 	
     private agenteDB() {
     	try {
-			this.connection = DriverManager.getConnection("mongodb+srv://aaron:aaron123@clusterequipo1.idibk.mongodb.net/BD_Equipo1?retryWrites=true&w=majority");
-		} catch (SQLException e) {
+    		uri = new MongoClientURI("mongodb+srv://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		mongoClient = new MongoClient(uri);
+    		database = mongoClient.getDatabase("Tareas");
+			collection = database.getCollection("Tareas");
+  		} catch (Exception e) {
 			e.printStackTrace();
 		}
     }
     
     /*
 
-	public static void main(String args[]) {
-		MongoClientURI uri = new MongoClientURI("mongodb+srv://david:david123@clusterequipo1.idibk.mongodb.net/<dbname>?retryWrites=true&w=majority");
-		
-		try(MongoClient mongoClient = new MongoClient(uri)){
-				
-			MongoDatabase database = mongoClient.getDatabase("BD_Equipo1");
-			MongoCollection<Document> collection = database.getCollection("User");
 			Document query = new Document("_id", new ObjectId("5f7d911ca1d9414ac992387a"));
 			Document result = collection.find(query).iterator().next();
 			
-			System.out.println("nombre: " + result.getString("nombre"));
-			}
 	} */
 
     private static class BrokerHolder {
@@ -46,11 +39,14 @@ public class agenteDB {
         return BrokerHolder.singleton;
     }
 
-    public Connection getBd() throws SQLException{
-    	if(this.connection.isClosed()) {
-    		this.connection = DriverManager.getConnection("mongodb+srv://aaron:aaron123@clusterequipo1.idibk.mongodb.net/BD_Equipo1?retryWrites=true&w=majority");
-    	}
-        return this.connection;
+    public MongoCollection<Document> getBd(){
+    	if(this.collection != null) {
+    		uri = new MongoClientURI("mongodb+srv://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		mongoClient = new MongoClient(uri);
+    		database = mongoClient.getDatabase("Tareas");
+			collection = database.getCollection("Tareas");
+		}
+        return this.collection;
     }
 	
 }
