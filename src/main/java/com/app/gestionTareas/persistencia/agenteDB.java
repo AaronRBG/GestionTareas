@@ -23,13 +23,6 @@ public class agenteDB {
 			e.printStackTrace();
 		}
     }
-    
-    /*
-
-			Document query = new Document("_id", new ObjectId("5f7d911ca1d9414ac992387a"));
-			Document result = collection.find(query).iterator().next();
-			
-	} */
 
     private static class BrokerHolder {
         static agenteDB singleton = new agenteDB();

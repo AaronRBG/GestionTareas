@@ -1,59 +1,68 @@
 package com.app.gestionTareas.persistencia;
 
+import java.util.ArrayList;
 import org.bson.Document;
-import org.bson.types.ObjectId;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 import com.app.gestionTareas.dominio.Tarea;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCollection;
 import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoCursor;
 
 
 @Repository
-public interface TareaDAO extends CrudRepository<Tarea, String> {
+public class TareaDAO {
 	
-	public static void insertar(String nombre, boolean done) {
+	public static ArrayList<Tarea> leer() {
+		
+		ArrayList<Tarea> tareas = new ArrayList<>();
 		Document document;
-		int c=0;
-		if (done) {
-			c=1;
-		}
+		Tarea t;
+
 		MongoCollection <Document> coleccion = agenteDB.get().getBd();
-		document = new Document();
-		document.put("nombre",nombre);
-		document.put("done",c);
+		
+		MongoCursor<Document> iter = coleccion.find().iterator();
+		
+		while((document = iter.next()) != null) {
+			
+			t = new Tarea(document.getString("nombre"), document.getBoolean("done"));
+			tareas.add(t);
+		}
+		
+		return tareas;
+	}
+	
+	public static void insertar(String nombre) {
+		Document document;
+
+		MongoCollection <Document> coleccion = agenteDB.get().getBd();
+		document = new Document("nombre",nombre);
+		document.append("done", 0);
 		coleccion.insertOne(document);
 
 	}
-	public static void actualizar(String nombre, boolean done, String id) {
+	
+	public static void actualizar(String nombre) {
 		Document document;
 		Document document2;
-		int c=0;
-		if (done) {
-			c=1;
-		}
+
 		MongoCollection <Document> coleccion = agenteDB.get().getBd();
 		
+		document = new Document("nombre",nombre);
+		document2 = new Document("nombre",nombre);
+		document2.put("done", 1);
 		
-		document = new Document("_id",new ObjectId(id));
-		document2 = new Document();
-		
-		document2.put("_id",new ObjectId(id));
-		
-		document2.put("nombre",nombre);
-		document2.put("done",c);
-		
-		coleccion.updateOne(document, document);
-		
-		
+		coleccion.findOneAndUpdate(document, document2);
 		
 	}
-	public static void eliminar(String accion) {
-		document.put("accion",accion);
-		coleccion.remove(document);
-		return true;
+	
+	public static void eliminar(String nombre) {
+		Document document;
+
+		MongoCollection <Document> coleccion = agenteDB.get().getBd();
+		
+		document = new Document("nombre",nombre);
+		
+		coleccion.findOneAndDelete(document);
+		
 	}
 		
 	
