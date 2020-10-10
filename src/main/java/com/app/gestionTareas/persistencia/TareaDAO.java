@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.app.gestionTareas.dominio.Tarea;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
-import com.app.gestionTareas.*;
 
 @Repository
 public class TareaDAO {
