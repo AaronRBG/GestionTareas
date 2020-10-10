@@ -36,11 +36,11 @@ public class SpringWebSocket extends TextWebSocketHandler {
         }
         
         if(jso.getString("type").equals("actualizar")){
-        	Manager.get().insertar((String)jso.get("nombre"));
+        	Manager.get().actualizar((String)jso.get("nombre"));
         }
 
         if(jso.getString("type").equals("eliminar")){
-        	Manager.get().insertar((String)jso.get("nombre"));
+        	Manager.get().eliminar((String)jso.get("nombre"));
         }
         
     }
