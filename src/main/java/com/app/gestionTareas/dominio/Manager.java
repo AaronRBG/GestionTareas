@@ -2,8 +2,6 @@ package com.app.gestionTareas.dominio;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.HttpSession;
-
 import org.json.JSONArray;
 
 import com.app.gestionTareas.persistencia.TareaDAO;

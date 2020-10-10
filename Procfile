@@ -1,1 +1,1 @@
-web: java -jar target/gestiondtareas-1.0.0.jar
+web: index.html
