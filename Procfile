@@ -1,1 +1,1 @@
-web: java -cp src/main/java/classes/:target/dependency/* com.app.gestionTareas.GestionTareasApplication.java
+web: java -cp target/classes/:target/dependency/* com/app/gestionTareas/GestionTareasApplication
