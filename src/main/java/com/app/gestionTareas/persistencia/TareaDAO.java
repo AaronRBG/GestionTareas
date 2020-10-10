@@ -20,8 +20,8 @@ public class TareaDAO {
 		
 		MongoCursor<Document> iter = coleccion.find().iterator();
 		
-		while((document = iter.next()) != null) {
-			
+		while((iter.hasNext())) {
+			document = iter.next();
 			t = new Tarea(document.getString("nombre"), document.getBoolean("done"));
 			tareas.add(t);
 		}
@@ -34,22 +34,22 @@ public class TareaDAO {
 
 		MongoCollection <Document> coleccion = agenteDB.get().getBd();
 		document = new Document("nombre",nombre);
-		document.append("done", 0);
+		document.append("done", false);
 		coleccion.insertOne(document);
 
 	}
 	
 	public static void actualizar(String nombre) {
 		Document document;
-		Document document2;
+		Document documentAUX;
 
 		MongoCollection <Document> coleccion = agenteDB.get().getBd();
 		
 		document = new Document("nombre",nombre);
-		document2 = new Document("nombre",nombre);
-		document2.put("done", 1);
+		documentAUX = new Document("$set",new Document("done",true));
+		//document2.put("done", 1);
 		
-		coleccion.findOneAndUpdate(document, document2);
+		coleccion.findOneAndUpdate(document, documentAUX);
 		
 	}
 	

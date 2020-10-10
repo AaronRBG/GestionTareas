@@ -27,15 +27,16 @@ function ViewModel() {
 				self.tareas.push(new Tarea(tarea.nombre, tarea.done));
 		
 	}
+	}
 	
 	 self.insertar = function() {
 		 var p = {
 	                type : "insertar",
-	                nombre : self.nombreTarea
+	                nombre : self.nombreTarea()
 	            };
 	            self.sws.send(JSON.stringify(p));
 	    }
-	}
+	
 
 	 
 // ACTUALIZAR

@@ -15,9 +15,9 @@ public class agenteDB {
 	
     private agenteDB() {
     	try {
-    		uri = new MongoClientURI("mongodb://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		uri = new MongoClientURI("mongodb://alberto:alberto123@clusterequipo1-shard-00-00.idibk.mongodb.net:27017,clusterequipo1-shard-00-01.idibk.mongodb.net:27017,clusterequipo1-shard-00-02.idibk.mongodb.net:27017/BD_Equipo1?ssl=true&replicaSet=atlas-13i99e-shard-0&authSource=admin&retryWrites=true&w=majority");
     		mongoClient = new MongoClient(uri);
-    		database = mongoClient.getDatabase("Tareas");
+    		database = mongoClient.getDatabase("BD_Equipo1");
 			collection = database.getCollection("Tareas");
   		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,9 +34,9 @@ public class agenteDB {
 
     public MongoCollection<Document> getBd(){
     	if(this.collection != null) {
-    		uri = new MongoClientURI("mongodb://user:user123@gestiontareas-shard-00-02.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		uri = new MongoClientURI("mongodb://alberto:alberto123@clusterequipo1-shard-00-00.idibk.mongodb.net:27017,clusterequipo1-shard-00-01.idibk.mongodb.net:27017,clusterequipo1-shard-00-02.idibk.mongodb.net:27017/BD_Equipo1?ssl=true&replicaSet=atlas-13i99e-shard-0&authSource=admin&retryWrites=true&w=majority");
     		mongoClient = new MongoClient(uri);
-    		database = mongoClient.getDatabase("Tareas");
+    		database = mongoClient.getDatabase("BD_Equipo1");
 			collection = database.getCollection("Tareas");
 		}
         return this.collection;
