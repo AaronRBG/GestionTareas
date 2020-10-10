@@ -17,13 +17,14 @@ function ViewModel() {
 	}
 
 	self.sws.onmessage = function(event) {
-		var data = JSON.parse(event);
+		var data= event.data;
+		data = JSON.parse(data);
 			
 			// Listar las tareas
-			var tareas = data;
+			var tareas = data.tareas;
 			for (var i = 0; i < tareas.length; i++) {
 				var tarea = tareas[i];
-				self.tareas.push(new Tarea(tarea.nombre, tarea.done);
+				self.tareas.push(new Tarea(tarea.nombre, tarea.done));
 		
 	}
 	
@@ -34,6 +35,7 @@ function ViewModel() {
 	            };
 	            self.sws.send(JSON.stringify(p));
 	    }
+	}
 
 	 
 // ACTUALIZAR
@@ -60,7 +62,7 @@ function ViewModel() {
                  self.sws.send(JSON.stringify(p));
 	    	}
 	    }
-	}
+	
 	}
 	var vm = new ViewModel();
 	ko.applyBindings(vm);

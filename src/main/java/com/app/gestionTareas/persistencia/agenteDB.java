@@ -15,7 +15,7 @@ public class agenteDB {
 	
     private agenteDB() {
     	try {
-    		uri = new MongoClientURI("mongodb+srv://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		uri = new MongoClientURI("mongodb://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
     		mongoClient = new MongoClient(uri);
     		database = mongoClient.getDatabase("Tareas");
 			collection = database.getCollection("Tareas");
@@ -34,7 +34,7 @@ public class agenteDB {
 
     public MongoCollection<Document> getBd(){
     	if(this.collection != null) {
-    		uri = new MongoClientURI("mongodb+srv://user:user123@gestiontareas.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
+    		uri = new MongoClientURI("mongodb://user:user123@gestiontareas-shard-00-02.82ebk.mongodb.net/Tareas?retryWrites=true&w=majority");
     		mongoClient = new MongoClient(uri);
     		database = mongoClient.getDatabase("Tareas");
 			collection = database.getCollection("Tareas");

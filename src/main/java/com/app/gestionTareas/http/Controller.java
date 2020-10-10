@@ -59,7 +59,7 @@ public class Controller {
     }
     
     @GetMapping("/leer")
-    public JSONArray leer(HttpSession session){
+    public JSONObject leer(HttpSession session){
         return Manager.get().leer();
     }
 	
