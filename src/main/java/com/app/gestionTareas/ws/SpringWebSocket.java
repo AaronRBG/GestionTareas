@@ -1,8 +1,6 @@
 package com.app.gestionTareas.ws;
 
-import java.util.List;
 import org.json.JSONObject;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketMessage;
@@ -16,13 +14,7 @@ public class SpringWebSocket extends TextWebSocketHandler {
 
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
-        HttpHeaders headers = session.getHandshakeHeaders();
-        List<String> cookies = headers.get("cookie");
-        for (String cookie : cookies)
-            if (cookie.startsWith("JSESSIONID=")) {
-                String httpSessionId = cookie.substring("JSESSIONID=".length());
-                break;
-            }
+        
     }
     
     @Override
