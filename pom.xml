@@ -3,6 +3,7 @@
   <groupId>GestionTareas</groupId>
   <artifactId>GestionTareas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
   <build>
     <plugins>
       <plugin>
@@ -13,6 +14,10 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-maven-plugin</artifactId>
+    </plugin>
     </plugins>
   </build>
   <distributionManagement>

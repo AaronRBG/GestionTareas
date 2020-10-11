@@ -18,7 +18,6 @@ public class SpringConfigurer implements WebSocketConfigurer {
     }
     
 
-    @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         SpringWebSocket webSocket = new SpringWebSocket();
         registry.addHandler(webSocket, "GestionTareas").setAllowedOrigins("*");

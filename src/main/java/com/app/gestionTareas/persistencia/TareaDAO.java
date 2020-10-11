@@ -12,7 +12,7 @@ public class TareaDAO {
 
 	public static ArrayList<Tarea> leer() {
 
-		ArrayList<Tarea> tareas = new ArrayList<>();
+		ArrayList<Tarea> tareas = new ArrayList<Tarea>();
 		Document document;
 		Tarea t;
 
