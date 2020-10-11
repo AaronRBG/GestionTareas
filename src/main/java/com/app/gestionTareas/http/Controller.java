@@ -38,7 +38,7 @@ public class Controller {
         boolean done = Boolean.parseBoolean(donette);       
         
 		try {
-			Manager.get().actualizar(nombre);
+			Manager.get().actualizar(nombre,done);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

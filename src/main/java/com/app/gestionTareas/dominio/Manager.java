@@ -26,9 +26,9 @@ public class Manager {
 
 	}
 
-	public void actualizar(String nombre) {
+	public void actualizar(String nombre, boolean done) {
 
-		TareaDAO.actualizar(nombre);
+		TareaDAO.actualizar(nombre, done);
 
 	}
 

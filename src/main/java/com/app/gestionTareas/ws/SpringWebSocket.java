@@ -38,7 +38,7 @@ public class SpringWebSocket extends TextWebSocketHandler {
         }
         
         if(jso.getString("type").equals("actualizar")){
-        	Manager.get().actualizar((String)jso.get("nombre"));
+        	Manager.get().actualizar((String)jso.get("nombre"),jso.getBoolean("done") );
         	session.sendMessage(new TextMessage(Manager.get().leer().toString()));
         }
 

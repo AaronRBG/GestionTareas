@@ -32,6 +32,10 @@ function ViewModel() {
           	  if(tareas[i].done === true){
           		  document.getElementsByClassName("form-check-input")[i].checked = true;
           	  }
+          	  else{
+          		document.getElementsByClassName("form-check-input")[i].checked = false;
+          	  }
+          	  
           	}
 	}
 	
@@ -66,9 +70,15 @@ function ViewModel() {
 	                    }
 	    }
 	    actualizarTarea(){
+	    	var pos;
+	    	for (var i = 0; i < self.listaTareas().length; i++) {
+            	if(self.listaTareas()[i].nombre === this.nombre)
+            	pos = i;
+            }
 	    	 var p = {
                      type : "actualizar",
-                     nombre: this.nombre
+                     nombre: this.nombre,
+                     done: document.getElementsByClassName("form-check-input")[pos].checked
                  };
                  self.sws.send(JSON.stringify(p));
                  
