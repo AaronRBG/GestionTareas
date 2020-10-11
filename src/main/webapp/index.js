@@ -2,7 +2,7 @@ var self;
 
 function ViewModel() {
 	self = this;
-	self.tareas = ko.observableArray([]);
+	self.listaTareas = ko.observableArray([]);
 	self.nombreTarea = ko.observable("");
 	
 
@@ -17,16 +17,22 @@ function ViewModel() {
 	}
 
 	self.sws.onmessage = function(event) {
-		var data= event.data;
-		data = JSON.parse(data);
+			var data= event.data;
+			data = JSON.parse(data);
 			
 			// Listar las tareas
 			var tareas = data.tareas;
 			for (var i = 0; i < tareas.length; i++) {
 				var tarea = tareas[i];
-				self.tareas.push(new Tarea(tarea.nombre, tarea.done));
-		
-	}
+				if(self.listaTareas().some(t=> t.nombre=== tarea.nombre ) === false){
+				self.listaTareas.push(new Tarea(tarea.nombre, tarea.done));
+				}
+			}
+			for (var i = 0; i < self.listaTareas().length; i++) {
+          	  if(tareas[i].done === true){
+          		  document.getElementsByClassName("form-check-input")[i].checked = true;
+          	  }
+          	}
 	}
 	
 	 self.insertar = function() {
@@ -54,6 +60,10 @@ function ViewModel() {
 	                        nombre: this.nombre
 	                    };
 	                    self.sws.send(JSON.stringify(p));
+	                    for (var i = 0; i < self.listaTareas().length; i++) {
+	                    	if(self.listaTareas()[i].nombre === this.nombre)
+	                    	self.listaTareas.splice(i, 1);
+	                    }
 	    }
 	    actualizarTarea(){
 	    	 var p = {
@@ -61,6 +71,8 @@ function ViewModel() {
                      nombre: this.nombre
                  };
                  self.sws.send(JSON.stringify(p));
+                 
+                 
 	    	}
 	    }
 	
