@@ -31,9 +31,13 @@ function ViewModel() {
 			for (var i = 0; i < self.listaTareas().length; i++) {
           	  if(tareas[i].done === true){
           		  document.getElementsByClassName("form-check-input")[i].checked = true;
+          		  var str = document.getElementsByClassName("form-check-label")[i].innerHTML;
+          		  var result = str.strike();
+          		  document.getElementsByClassName("form-check-label")[i].innerHTML = result;
           	  }
           	  else{
           		document.getElementsByClassName("form-check-input")[i].checked = false;
+        		document.getElementsByClassName("form-check-label")[i].innerHTML = tareas[i].nombre;
           	  }
           	  
           	}
