@@ -3,8 +3,8 @@ package com.app.cucumber;
 import org.junit.runner.RunWith;
 
 import cucumber.api.testng.AbstractTestNGCucumberTests;
-import io.cucumber.junit.Cucumber;
-import io.cucumber.junit.CucumberOptions;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 
