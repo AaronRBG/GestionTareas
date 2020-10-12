@@ -22,5 +22,5 @@ Feature: GestionTareas
 @tag1
   Scenario: Insertar Tarea
   Given una tarea "Comprar papel"
-  When inserto tarea en la base de datos 
-  Then confirma que se ha insertado
+  When inserto "tarea" en la base de datos 
+  Then confirma que se ha insertado "la tarea"
