@@ -12,9 +12,12 @@
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
 	crossorigin="anonymous">
 
-<title>Hello, world!</title>
+<!-- CUSTOM CSS -->
+<link rel="stylesheet" href="index.css">
+
+<title>Lista de tareas</title>
 <div class="container">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a class="navbar-brand" href="/">Lista de tareas</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -28,40 +31,45 @@
 </div>
 </head>
 <body>
-	<div class="container">
-		<h1 align="center">
-			<span class="badge badge-secondary">Lista de tareas</span>
-		</h1>
+	<header class="main-header">
+		<div class="background-overlay text-white py-5">
+			<div class="container">
+				<!--LISTA DE TAREAS-->
+				<br />
+				<div class="form-check">
+					<!-- ko foreach : { data: listaTareas, as :"tarea" } -->
+					<div class="row">
+						<input class="form-check-input" type="checkbox" value=""
+							id="defaultCheck1" data-bind="click : actualizarTarea"> <label
+							class="form-check-label" for="defaultCheck1"
+							data-bind="html : nombre"> </label>
+						<div class="col-md-6">
+							<button data-bind="click : eliminarTarea"
+								class="btn btn-outline-secondary" type="button"
+								id="button-addon2">Eliminar</button>
+						</div>
+					</div>
+					<br />
+					<!-- /ko -->
 
-		<!--LISTA DE TAREAS-->
+				</div>
 
-		<div class="form-check">
-			<!-- ko foreach : { data: listaTareas, as :"tarea" } -->
-			<div class="row">
-				<input class="form-check-input" type="checkbox" value=""
-					id="defaultCheck1" data-bind="click : actualizarTarea"> <label class="form-check-label"
-					for="defaultCheck1" data-bind="html : nombre" > </label>
-				<div class="col-md-6">
-					<button data-bind="click : eliminarTarea" class="btn btn-outline-secondary" type="button"
-						id="button-addon2">Eliminar</button>
+				<br />
+				<!-- aniadir tarea -->
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<button data-bind="click : $root.insertar"
+							class="btn btn-outline-secondary" type="button"
+							id="button-addon1">Añadir</button>
+					</div>
+					<input data-bind="value : nombreTarea" type="text"
+						class="form-control" placeholder=""
+						aria-label="Example text with button addon"
+						aria-describedby="button-addon1">
 				</div>
 			</div>
-			<!-- /ko -->
-		</div>
-		<br />
-		<!-- aniadir tarea -->
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<button data-bind="click : $root.insertar" class="btn btn-outline-secondary" type="button"
-					id="button-addon1">Añadir</button>
-			</div>
-			<input data-bind="value : nombreTarea" type="text" class="form-control" placeholder=""
-				aria-label="Example text with button addon"
-				aria-describedby="button-addon1">
-		</div>
-		<div class="custom-control custom-checkbox">
-  
-</div>
+	</header>
+	<div class="custom-control custom-checkbox"></div>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->

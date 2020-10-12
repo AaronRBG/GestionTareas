@@ -12,20 +12,23 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.And;
 
+
 public class CasoDePrueba {
-	@Given("^una tarea \"([^\"]*)\"$")
+	
+	@Given("^Una tarea \"([^\"]*)\"$")
 	public void una_tarea(String arg1) throws Throwable {
 		TareaDAO.insertar(arg1);
 	}
-
-	@When("^inserto tarea en la base de datos$")
+/*
+	@When("^Inserto tarea en la base de datos$")
 	public void inserto_tarea_en_la_base_de_datos(MongoCollection<Document> coleccion ,Document document) throws Throwable {
 		coleccion.insertOne(document);
 		
 	}
-
-	@Then("^confirma que se ha insertado$")
+*/
+	@Then("^Confirma que se ha insertado$")
 	public void confirma_que_se_ha_insertado() throws Throwable {
 		TareaDAO.leer();
 	}
+	
 }
