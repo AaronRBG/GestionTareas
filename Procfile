@@ -1,1 +1,1 @@
-web: java -cp target/classes/:target/dependency/* com/app/gestionTareas/GestionTareasApplication
+web: java -jar target/GestionTareas-1-0-SNAPSHOT.jar --server.port=$PORT
